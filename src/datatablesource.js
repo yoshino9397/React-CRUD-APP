@@ -37,3 +37,44 @@ export const userColumns = [
     },
   },
 ];
+
+export const productColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "product",
+    headerName: "Product",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.img} alt="avatar" />
+          {params.row.username}
+        </div>
+      );
+    },
+  },
+  {
+    field: "title",
+    headerName: "Title",
+    width: 100,
+  },
+
+  {
+    field: "price",
+    headerName: "Price",
+    width: 200,
+  },
+  {
+    field: "stock",
+    headerName: "Stock",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.status}
+        </div>
+      );
+    },
+  },
+];
+
