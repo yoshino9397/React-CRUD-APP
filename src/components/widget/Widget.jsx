@@ -1,5 +1,6 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -60,7 +61,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "products":
+    case "product":
       data = {
         title: "PRODUCTS",
         query: "products",
@@ -96,6 +97,7 @@ const Widget = ({ type }) => {
         where("timeStamp", "<=", lastMonth),
         where("timeStamp", ">", prevMonth)
       );
+
       const lastMonthData = await getDocs(lastMonthQuery);
       const prevMonthData = await getDocs(prevMonthQuery);
 
@@ -107,7 +109,7 @@ const Widget = ({ type }) => {
       );
     };
     fetchData();
-  }, []);
+  }, [data.query]);
 
   return (
     <div className="widget">
@@ -119,8 +121,8 @@ const Widget = ({ type }) => {
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
+        <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>
+          {diff < 0 ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
           {diff} %
         </div>
         {data.icon}
