@@ -48,7 +48,7 @@ export const productColumns = [
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          {params.row.title}
         </div>
       );
     },
@@ -70,8 +70,8 @@ export const productColumns = [
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
+        <div className={`cellWithStatus ${params.row.stock}`}>
+          {params.row.stock}
         </div>
       );
     },
