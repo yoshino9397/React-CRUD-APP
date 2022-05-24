@@ -2,17 +2,19 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
-import New from "./pages/new/New";
+import Newuser from "./pages/newuser/Newuser";
+import Product from "./pages/product/Product";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
+import Newproduct from "./pages/newproduct/Newproduct";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
   };
@@ -52,7 +54,7 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New inputs={userInputs} title="Add New User" />
+                    <Newuser inputs={userInputs} title="Add New User" />
                   </RequireAuth>
                 }
               />
@@ -62,7 +64,7 @@ function App() {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <Product />
                   </RequireAuth>
                 }
               />
@@ -78,7 +80,10 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <Newproduct
+                      inputs={productInputs}
+                      title="Add New Product"
+                    />
                   </RequireAuth>
                 }
               />
