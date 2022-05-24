@@ -3,13 +3,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useEffect, useState } from "react";
-import {
-  doc,
-  serverTimestamp,
-  setDoc,
-} from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
@@ -61,12 +56,7 @@ const Newproduct = ({ inputs, title }) => {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const res = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      await setDoc(doc(db, "users", res.user.uid), {
+      await addDoc(collection(db, "products"), {
         ...data,
         timeStamp: serverTimestamp(),
       });
@@ -83,9 +73,9 @@ const Newproduct = ({ inputs, title }) => {
   };
 
   return (
-    <div className="new">
+    <div className="newProduct">
       <Sidebar />
-      <div className="newContainer">
+      <div className="newProductContainer">
         <Navbar />
         <div className="top">
           <h1>{title}</h1>
