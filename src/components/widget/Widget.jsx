@@ -35,7 +35,7 @@ const Widget = ({ type }) => {
     case "order":
       data = {
         title: "ORDERS",
-        isMoney: false,
+        query: "products",
         link: "View all orders",
         icon: (
           <ShoppingCartOutlinedIcon
