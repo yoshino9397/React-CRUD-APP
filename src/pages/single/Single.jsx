@@ -3,29 +3,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
-import { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../firebase";
-import { useLocation } from "react-router-dom";
 
 const Single = () => {
-  const [data, setData] = useState([]);
-  const location = useLocation().pathname.split("/")[2];
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = query(collection(db, "users"), where("users", "==", location));
-        const userData = await getDocs(res);
-        setData(userData);
-        console.log(userData);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
     <div className="single">
       <Sidebar />
@@ -42,7 +21,7 @@ const Single = () => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{data.username}</h1>
+                <h1 className="itemTitle">Yoshino Yayama</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
                   <span className="itemValue">yoshino@mail.com</span>
