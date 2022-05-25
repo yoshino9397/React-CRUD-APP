@@ -7,7 +7,6 @@ import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const Datatable = () => {
-  // const [data, setData] = useState(userRows);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -62,7 +61,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/users/${params.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
