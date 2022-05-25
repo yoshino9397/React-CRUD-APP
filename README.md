@@ -3,6 +3,7 @@
 Github URl for deploy >>>> [Github](https://github.com/yoshino9397/React-CRUD-Deploy) 
 
 Deploy site >>>> [CRUD APP](https://yoshino-crud-app.netlify.app) 
+Please login with placeholder's email and password
 
 
 ## About
