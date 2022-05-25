@@ -12,4 +12,4 @@ Deploy site >>>> [CRUD APP](https://yoshino-crud-app.netlify.app)
 - Database : [Firebase](https://firebase.google.com/)
 
 
-# I used Firebase instead of Mongodb or MySQL this time because I'm still unfamiliar with database management in firebase.
+I used Firebase instead of Mongodb or MySQL this time because I'm still unfamiliar with database management in firebase.
